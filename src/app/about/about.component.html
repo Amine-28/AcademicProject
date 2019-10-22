@@ -1,1 +1,30 @@
-<h1 style="background-color:blue">About</h1>
+
+<br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">About Component</div>
+    <div class="panel-body">
+      <ul class="">
+        <li>Nom : {{info.nom}}</li>
+        <li>Email : {{info.email}}</li>
+        <li>Tel : {{info.tel}}</li>
+      </ul>
+      <div class="form-group">
+        <label>Message</label>
+        <input type="text" [(ngModel)]="comment.message" >
+        <button (click)="addComment()" [disabled]="newComment" class="btn btn-primary">Add Comment</button>
+      </div>
+      <div *ngIf="comments.length>0; else noComments">
+        <h3>Liste des messages: </h3>
+        <ul class="list-group">
+          <li *ngFor="let c of comments" class="list-group-item">
+            {{c.message}}
+          </li>
+        </ul>
+      </div>
+      <ng-template #noComments>
+        <p> Liste de Commentaires est vide </p>
+      </ng-template>
+    </div>
+  </div>
+</div>
